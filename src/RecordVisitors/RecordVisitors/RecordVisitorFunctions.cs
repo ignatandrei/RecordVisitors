@@ -23,7 +23,7 @@ namespace RecordVisitors
         }
         public Func<HttpContext, Claim> GetUser;
         public Action<HttpContext, Claim> RegisterInScope;
-        public Action<Claim> SaveNewClaim;
+
     
     }
 }

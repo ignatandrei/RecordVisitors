@@ -56,7 +56,6 @@ namespace RecordVisitors
             services.AddSingleton<RecordVisitorFunctions>();
             services.AddTransient<UsersRepository>();
             return services;
-
         } 
     }
 }
