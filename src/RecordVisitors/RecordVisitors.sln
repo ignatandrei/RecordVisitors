@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordVisitors", "RecordVisitors\RecordVisitors.csproj", "{B6F0DCB6-2632-4D25-A83E-BEB4DEE5C526}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecordVisitors", "RecordVisitors\RecordVisitors.csproj", "{B6F0DCB6-2632-4D25-A83E-BEB4DEE5C526}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWeb", "SampleWeb\SampleWeb.csproj", "{2C8C196E-C77E-4AE5-AA8A-E8BE15B59CDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B6F0DCB6-2632-4D25-A83E-BEB4DEE5C526}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6F0DCB6-2632-4D25-A83E-BEB4DEE5C526}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6F0DCB6-2632-4D25-A83E-BEB4DEE5C526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C8C196E-C77E-4AE5-AA8A-E8BE15B59CDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C8C196E-C77E-4AE5-AA8A-E8BE15B59CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C8C196E-C77E-4AE5-AA8A-E8BE15B59CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C8C196E-C77E-4AE5-AA8A-E8BE15B59CDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
