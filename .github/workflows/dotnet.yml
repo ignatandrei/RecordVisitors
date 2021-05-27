@@ -35,11 +35,15 @@ jobs:
         dotnet tool restore
         dotnet coverlet AutomatedTestRecord\bin\Debug\net5.0\AutomatedTestRecord.dll --target "dotnet" --targetargs "test RecordVisitors.sln --no-build"  --format opencover --exclude "[SampleWeb*]*"  --exclude "[xunit*]*" --verbosity detailed
         dotnet reportgenerator "-reports:coverage.opencover.xml" "-targetdir:coveragereport" "-reporttypes:HTMLInline;HTMLSummary;Badges"
+    - name: verify code coverage
+      run: |
+        ls src/RecordVisitors/coverage.opencover.xml 
+        
     - uses: codecov/codecov-action@v1
       with:
         files: src/RecordVisitors/coverage.opencover.xml 
         fail_ci_if_error: true # optional (default = false)
-        verbose: true # optional (default = false)
+        #verbose: true # optional (default = false)
     - name: Pack
       run: |
         cd src/RecordVisitors/RecordVisitors
