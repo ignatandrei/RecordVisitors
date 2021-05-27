@@ -9,10 +9,10 @@ namespace RecordVisitors
 
     public class RecordVisitorsMiddleware : IMiddleware
     {
-        private readonly RecordVisitorFunctions recordVisitorFunctions;
-        private readonly UsersRepository retrieveUsersRepository;
+        private readonly IRecordVisitorFunctions recordVisitorFunctions;
+        private readonly IUsersRepository retrieveUsersRepository;
 
-        public RecordVisitorsMiddleware(RecordVisitorFunctions  recordVisitorFunctions,UsersRepository retrieveUsersRepository)
+        public RecordVisitorsMiddleware(IRecordVisitorFunctions recordVisitorFunctions,IUsersRepository retrieveUsersRepository)
         {
             this.recordVisitorFunctions = recordVisitorFunctions;
             this.retrieveUsersRepository = retrieveUsersRepository;

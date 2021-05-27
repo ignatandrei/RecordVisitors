@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace RecordVisitors
 {
-    public class UsersRepository
+    public class UsersRepository : IUsersRepository
     {
-        static SemaphoreSlim ss = new SemaphoreSlim(1,1);
+        static SemaphoreSlim ss = new SemaphoreSlim(1, 1);
         public bool RecordJustLatest { get; set; }
         DbContextOptions<UserRecordVisitors> options;
         public UsersRepository()
@@ -18,7 +18,7 @@ namespace RecordVisitors
             options = new DbContextOptionsBuilder<UserRecordVisitors>()
                 .UseInMemoryDatabase(databaseName: "AndreiIgnatRecord")
                 .Options;
-            
+
         }
         public async Task<UserRecorded[]> GetClaims(uint minutesBeforeNow)
         {
@@ -29,11 +29,11 @@ namespace RecordVisitors
                 var data = await cnt.UserRecorded
                     .Where(it => it.dateRecorded >= date)
                     .ToArrayAsync();
-                
-                return data;               
+
+                return data;
             }
         }
-        
+
         public async Task<int> SaveClaim(Claim c)
         {
             try
@@ -49,7 +49,7 @@ namespace RecordVisitors
                     {
                         var existingRecord = await cnt
                             .UserRecorded
-                            .Where(it => it.IdentifierApp == ur.IdentifierApp  && it.UserName == ur.UserName)
+                            .Where(it => it.IdentifierApp == ur.IdentifierApp && it.UserName == ur.UserName)
                             .FirstOrDefaultAsync();
 
                         if (existingRecord != null)

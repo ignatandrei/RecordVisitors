@@ -5,7 +5,7 @@ using System.Security.Claims;
 
 namespace RecordVisitors
 {
-    public class RecordVisitorFunctions
+    public class RecordVisitorFunctions : IRecordVisitorFunctions
     {
         public RecordVisitorFunctions()
         {
@@ -18,10 +18,10 @@ namespace RecordVisitors
                 }
                 return cnt.User?.Claims.FirstOrDefault();
             };
-            
-        }
-        public Func<HttpContext, Claim> GetUser;
 
-    
+        }
+        public Func<HttpContext, Claim> GetUser { get; set; }
+
+
     }
 }

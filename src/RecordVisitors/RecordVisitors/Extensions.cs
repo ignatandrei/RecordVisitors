@@ -25,7 +25,11 @@ namespace RecordVisitors
         }
         public static IEndpointRouteBuilder UseVisitors(this IEndpointRouteBuilder endpoints)
         {
-            var repo = endpoints.ServiceProvider.GetService<UsersRepository>();
+            var repo = endpoints.ServiceProvider.GetService<IUsersRepository>();
+            if(repo == null)
+            {
+                throw new ArgumentException("please add IUsersRepository DI : did you add services.AddRecordVisitorsDefault(); ? ");
+            }
             endpoints.Map("/recordVisitors/AllVisitors5Min", async app => {
                 
                 var data = await repo.GetClaims(5);
@@ -42,8 +46,8 @@ namespace RecordVisitors
         public static IServiceCollection AddRecordVisitorsDefault(this IServiceCollection services)
         {
             services.AddSingleton<RecordVisitorsMiddleware>();
-            services.AddSingleton<RecordVisitorFunctions>();
-            services.AddTransient<UsersRepository>();
+            services.AddSingleton<IRecordVisitorFunctions>(new RecordVisitorFunctions());
+            services.AddTransient<IUsersRepository>(sc=>new UsersRepository());
             return services;
         } 
     }
