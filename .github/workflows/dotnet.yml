@@ -23,8 +23,8 @@ jobs:
         dotnet restore
     - name: Build
       run: |
-        cd src/RecordVisitorsdotnet 
-        build --no-restore
+        cd src/RecordVisitors
+        dotnet build --no-restore
     - name: Test
       run: |
         cd src/RecordVisitors
