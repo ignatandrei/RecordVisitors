@@ -26,8 +26,9 @@ namespace RecordVisitors
         public static IEndpointRouteBuilder UseVisitors(this IEndpointRouteBuilder endpoints)
         {
             var repo = endpoints.ServiceProvider.GetService<UsersRepository>();
-            endpoints.Map("/recordVisitors/AllVisitors", async app => {
-                var data = await repo.GetClaims();
+            endpoints.Map("/recordVisitors/AllVisitors5Min", async app => {
+                
+                var data = await repo.GetClaims(5);
                 await app.Response.WriteAsJsonAsync(data);
             });
             return endpoints;

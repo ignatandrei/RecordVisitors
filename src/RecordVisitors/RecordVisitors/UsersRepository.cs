@@ -2,40 +2,77 @@
 using System;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RecordVisitors
 {
     public class UsersRepository
     {
+        static SemaphoreSlim ss = new SemaphoreSlim(1,1);
+        public bool RecordJustLatest { get; set; }
         DbContextOptions<UserRecordVisitors> options;
         public UsersRepository()
         {
+            RecordJustLatest = true;
             options = new DbContextOptionsBuilder<UserRecordVisitors>()
                 .UseInMemoryDatabase(databaseName: "AndreiIgnatRecord")
                 .Options;
             
         }
-        public async Task<UserRecorded[]> GetClaims()
+        public async Task<UserRecorded[]> GetClaims(uint minutesBeforeNow)
         {
             using (var cnt = new UserRecordVisitors(options))
             {
-                var data = await cnt.UserRecorded.ToArrayAsync();
+                var date = DateTime.UtcNow.AddMinutes(-minutesBeforeNow);
+
+                var data = await cnt.UserRecorded
+                    .Where(it => it.dateRecorded >= date)
+                    .ToArrayAsync();
+                
                 return data;               
             }
         }
+        
         public async Task<int> SaveClaim(Claim c)
         {
-            var ur = new UserRecorded();
-            ur.TypeClaim = c.Type;
-            ur.Value = c.Value;
-            ur.ValueType = c.ValueType;
-            using(var cnt=new UserRecordVisitors(options))
+            try
             {
-                cnt.UserRecorded.Add(ur);
-                return await cnt.SaveChangesAsync();
+                if (RecordJustLatest)
+                    await ss.WaitAsync();
+                var ur = new UserRecorded();
+                ur.UserName = c.Value;
+                if (RecordJustLatest)
+                {
+
+                    using (var cnt = new UserRecordVisitors(options))
+                    {
+                        var existingRecord = await cnt
+                            .UserRecorded
+                            .Where(it => it.IdentifierApp == ur.IdentifierApp  && it.UserName == ur.UserName)
+                            .FirstOrDefaultAsync();
+
+                        if (existingRecord != null)
+                        {
+                            existingRecord.dateRecorded = DateTime.UtcNow;
+                            return await cnt.SaveChangesAsync();
+
+                        }
+                    }
+                }
+                using (var cnt = new UserRecordVisitors(options))
+                {
+                    cnt.UserRecorded.Add(ur);
+                    return await cnt.SaveChangesAsync();
+                }
             }
-            
+            finally
+            {
+                if (RecordJustLatest)
+                    ss.Release();
+
+            }
+
         }
 
     }
