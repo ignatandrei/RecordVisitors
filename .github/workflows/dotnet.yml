@@ -29,6 +29,11 @@ jobs:
       run: |
         cd src/RecordVisitors
         dotnet test --no-build --verbosity normal
+    - name: code coverage
+      run: |
+        cd src/RecordVisitors
+        dotnet tool restore
+        dotnet coverlet AutomatedTestRecord\bin\Debug\net5.0\AutomatedTestRecord.dll --target "dotnet" --targetargs "test RecordVisitors.sln --no-build"  --format opencover --exclude "[SampleWeb*]*"  --exclude "[xunit*]*" --verbosity detailed
     - name: Pack
       run: |
         cd src/RecordVisitors/RecordVisitors
