@@ -23,7 +23,6 @@ namespace RecordVisitors
             if (claim == null)
                 return;
             UserComing?.Invoke(this, claim);
-            recordVisitorFunctions.RegisterInScope?.Invoke(context, claim);
             await retrieveUsersRepository.SaveClaim(claim);
             await next(context);
         }

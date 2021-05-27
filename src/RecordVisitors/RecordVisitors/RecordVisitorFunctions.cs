@@ -18,11 +18,9 @@ namespace RecordVisitors
                 }
                 return cnt.User?.Claims.FirstOrDefault();
             };
-            RegisterInScope = (cnt, claim) => cnt.Items.Add("userClaimMiddleware", claim);
-
+            
         }
         public Func<HttpContext, Claim> GetUser;
-        public Action<HttpContext, Claim> RegisterInScope;
 
     
     }
