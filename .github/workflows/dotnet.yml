@@ -9,8 +9,8 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
-
+    #runs-on: ubuntu-latest
+    runs-on: windows-2019
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -33,8 +33,8 @@ jobs:
       run: |
         cd src/RecordVisitors
         dotnet tool restore
-        # dotnet coverlet AutomatedTestRecord\bin\Debug\net5.0\AutomatedTestRecord.dll --target "dotnet" --targetargs "test RecordVisitors.sln --no-build"  --format opencover --exclude "[SampleWeb*]*"  --exclude "[xunit*]*" --verbosity detailed
-        dotnet coverlet AutomatedTestRecord\bin\Debug\net5.0\AutomatedTestRecord.dll --target "dotnet" --targetargs "test RecordVisitors.sln"  --format opencover  --verbosity detailed
+        dotnet coverlet AutomatedTestRecord\bin\Debug\net5.0\AutomatedTestRecord.dll --target "dotnet" --targetargs "test RecordVisitors.sln --no-build"  --format opencover --exclude "[SampleWeb*]*"  --exclude "[xunit*]*" --verbosity detailed
+        #dotnet coverlet AutomatedTestRecord\bin\Debug\net5.0\AutomatedTestRecord.dll --target "dotnet" --targetargs "test RecordVisitors.sln"  --format opencover  --verbosity detailed
         dotnet reportgenerator "-reports:coverage.opencover.xml" "-targetdir:coveragereport" "-reporttypes:HTMLInline;HTMLSummary;Badges"
 
     - name: 'Upload Artifact'
