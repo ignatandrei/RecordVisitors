@@ -15,6 +15,7 @@ namespace SampleWeb
 
     public class MockAuthenticatedUser : AuthenticationHandler<AuthenticationSchemeOptions>
     {
+        public bool ReturnFalse;
         const string userId = "phv";
         const string userName = "Jean Irvine";
         const string userRole = "ProductManager";
@@ -28,6 +29,8 @@ namespace SampleWeb
 
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
         {
+            if (ReturnFalse)
+                return AuthenticateResult.NoResult();
             var claims = new[]
               {
           new Claim(ClaimTypes.NameIdentifier, userId),
