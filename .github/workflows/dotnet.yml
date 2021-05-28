@@ -46,7 +46,7 @@ jobs:
 
     - name: verify code coverage
       run: |
-        ls -lh src/RecordVisitors/coverage.opencover.xml 
+        ls src/RecordVisitors/coverage.opencover.xml 
 
     - uses: codecov/codecov-action@v1
       with:
