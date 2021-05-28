@@ -5,11 +5,12 @@ using Xunit;
 
 namespace AutomatedTestRecord
 {
-    public class UnitTest1 : IClassFixture<WebApplicationFactory<Startup>>
+    
+    public class TestHappyPath : IClassFixture<WebApplicationFactory<Startup>>
     {
         private readonly WebApplicationFactory<Startup> _factory;
 
-        public UnitTest1(WebApplicationFactory<Startup> factory)
+        public TestHappyPath(WebApplicationFactory<Startup> factory)
         {
             _factory = factory;
         }
