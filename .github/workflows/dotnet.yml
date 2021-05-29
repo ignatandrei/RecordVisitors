@@ -49,7 +49,9 @@ jobs:
         #verbose: true # optional (default = false)
     - name: Pack
       run: |
-        cd src/RecordVisitors/RecordVisitors
+        cd src/RecordVisitors/
+        dotnet pwsh setVersion.ps1
+        cd RecordVisitors
         dotnet pack -o nugetPackages --include-source --include-symbols
 
     - name: 'Upload Artifact'
