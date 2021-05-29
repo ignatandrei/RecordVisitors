@@ -14,4 +14,24 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.6" />
   </ItemGroup>
+  <PropertyGroup>
+    <Version>2021.0.0</Version>
+    <Authors>Andrei Ignat</Authors>
+    <Description>This package help you record your visitors</Description>
+    <Title>Record Visitors</Title>
+    <PackageTags>C#;.NET;ASP.NET Core</PackageTags>
+    <RepositoryUrl>https://github.com/ignatandrei/RecordVisitors</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/ignatandrei/RecordVisitors</PackageProjectUrl>
+    <RepositoryType>GIT</RepositoryType>
+    <Copyright>MIT</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+</ItemGroup>
 </Project>
