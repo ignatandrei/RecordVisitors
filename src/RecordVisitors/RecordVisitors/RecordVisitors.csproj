@@ -24,6 +24,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <None Include="../../../readme.md" Pack="true" PackagePath="\" />
+    <None Include="../../../docs/rv.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 
@@ -34,7 +35,8 @@
     <Title>Record Visitors</Title>
     <PackageTags>C#;.NET;ASP.NET Core</PackageTags>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <PackageIconUrl>https://github.com/ignatandrei/RecordVisitors/raw/main/docs/rv.png</PackageIconUrl>
+    <!--<PackageIconUrl>https://github.com/ignatandrei/RecordVisitors/raw/main/docs/rv.png</PackageIconUrl>-->
+    <PackageIcon>rv.png</PackageIcon>
     <RepositoryUrl>https://github.com/ignatandrei/RecordVisitors</RepositoryUrl>
     <PackageProjectUrl>https://github.com/ignatandrei/RecordVisitors</PackageProjectUrl>
     <RepositoryType>GIT</RepositoryType>
