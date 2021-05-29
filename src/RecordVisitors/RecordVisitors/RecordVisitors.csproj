@@ -34,7 +34,7 @@
     <Title>Record Visitors</Title>
     <PackageTags>C#;.NET;ASP.NET Core</PackageTags>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <icon>https://github.com/ignatandrei/RecordVisitors/raw/main/docs/rv.png</icon>
+    <PackageIconUrl>https://github.com/ignatandrei/RecordVisitors/raw/main/docs/rv.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/ignatandrei/RecordVisitors</RepositoryUrl>
     <PackageProjectUrl>https://github.com/ignatandrei/RecordVisitors</PackageProjectUrl>
     <RepositoryType>GIT</RepositoryType>
