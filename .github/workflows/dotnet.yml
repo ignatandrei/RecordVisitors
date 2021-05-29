@@ -52,7 +52,7 @@ jobs:
         cd src/RecordVisitors/
         dotnet pwsh setVersion.ps1
         cd RecordVisitors
-        dotnet pack -o nugetPackages --include-source --include-symbols
+        dotnet pack -o nugetPackages 
 
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v2
