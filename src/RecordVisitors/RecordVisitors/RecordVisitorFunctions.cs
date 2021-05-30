@@ -7,9 +7,25 @@ namespace RecordVisitors
 {
     class RecordVisitorFunctions : IRecordVisitorFunctions
     {
-        public Func<HttpContext, Claim> GetUser { get; set; }
+        public IRequestRecorded GetUrl(HttpContext context)
+        {
+            var req = context?.Request;
+            if (req == null)
+                return null;
 
-        Claim IRecordVisitorFunctions.GetUser(HttpContext cnt)
+            if(req.Method !=  HttpMethods.Get)
+                return null;
+
+            var url = req.Path.Value;
+            if (url == null)
+                return null;
+            var rr = new RequestRecorded();
+            rr.URL = url;
+            rr.AdditionalData = null;            
+            return rr;
+        }
+
+        public Claim GetUser(HttpContext cnt)
         {
 
 
@@ -21,5 +37,6 @@ namespace RecordVisitors
             return cnt.User?.Claims.FirstOrDefault();
 
         }
+
     }
 }

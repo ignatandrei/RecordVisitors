@@ -69,6 +69,23 @@ namespace RecordVisitors
                 var data = await repo.GetUserId(val);
                 await app.Response.WriteAsync(data);
             });
+            endpoints.MapGet("/recordVisitors/UserHistory/{userId}/{dateFrom:datetime:regex(\\d{{4}}-\\d{{2}}-\\d{{2}})}/{dateTo?}", async app => {
+
+                var userID = app.Request.RouteValues["userId"]?.ToString();
+                var dateFromStr = app.Request.RouteValues["dateFrom"]?.ToString();
+                var dateToStr = app.Request.RouteValues["dateTo"]?.ToString();
+                var dateTo = DateTime.UtcNow.AddDays(2);
+                if(dateToStr != null)
+                {
+                    dateTo = DateTime.ParseExact(dateToStr,"yyyy-MM-dd",null);
+                }
+
+                var dateFrom= DateTime.ParseExact(dateFromStr,"yyyy-MM-dd", null);
+                
+                var data = await repo.UserRecordedUrls(userID,dateFrom,dateTo);
+                await app.Response.WriteAsJsonAsync(data);
+            });
+
             return endpoints;
         }
         /// <summary>

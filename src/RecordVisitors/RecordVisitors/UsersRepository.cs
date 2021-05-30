@@ -36,7 +36,7 @@ namespace RecordVisitors
             }
         }
 
-        public async Task<int> SaveUser(Claim c)
+        public async Task<string> SaveUser(Claim c)
         {
             try
             {
@@ -57,7 +57,8 @@ namespace RecordVisitors
                         if (existingRecord != null)
                         {
                             existingRecord.dateRecorded = DateTime.UtcNow;
-                            return await cnt.SaveChangesAsync();
+                            await cnt.SaveChangesAsync();
+                            return existingRecord.ID;
 
                         }
                     }
@@ -65,7 +66,8 @@ namespace RecordVisitors
                 using (var cnt = new UserRecordVisitorsContext(options))
                 {
                     cnt.UserRecorded.Add(ur);
-                    return await cnt.SaveChangesAsync();
+                    await cnt.SaveChangesAsync();
+                    return ur.ID;
                 }
             }
             finally
@@ -91,11 +93,27 @@ namespace RecordVisitors
             using (var cnt = new UserRecordVisitorsContext(options))
             {
                 var data = await cnt.RequestRecorded
-                    .Where(it => it.UserRecordedId== userId)
-                    .Where(it=>it.DateRecorded >= fromDate)
-                    .Where(it=> it.DateRecorded<=fromDate)
+                    .Where(it => it.UserRecordedId == userId)
+                    .Where(it => it.DateRecorded >= fromDate)
+                    .Where(it => it.DateRecorded <= fromDate)
                     .ToArrayAsync();
                 return data;
+            }
+        }
+
+        public async Task SaveHistory(IRequestRecorded rr)
+        {
+            var req = rr as RequestRecorded;
+            if (rr != null)
+            {
+
+
+                using (var cnt = new UserRecordVisitorsContext(options))
+                {
+                    cnt.RequestRecorded.Add(req);
+
+                    await cnt.SaveChangesAsync();
+                }
             }
         }
     }

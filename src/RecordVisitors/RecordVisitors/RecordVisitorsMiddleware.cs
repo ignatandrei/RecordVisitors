@@ -35,7 +35,13 @@ namespace RecordVisitors
             if (claim == null)
                 return;
             UserComing?.Invoke(this, claim);
-            await retrieveUsersRepository.SaveUser(claim);
+            var userId= await retrieveUsersRepository.SaveUser(claim);
+            var rr = recordVisitorFunctions.GetUrl(context);
+            if (rr != null)
+            {
+                rr.UserRecordedId = userId;
+                await retrieveUsersRepository.SaveHistory(rr);
+            }
             await next(context);
         }
 

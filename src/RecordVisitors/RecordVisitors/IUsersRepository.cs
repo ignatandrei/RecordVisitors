@@ -25,8 +25,8 @@ namespace RecordVisitors
         /// save the user
         /// </summary>
         /// <param name="claim">claim of the user</param>
-        /// <returns>how many records were affected when save ( usual 1) </returns>
-        Task<int> SaveUser(Claim claim);
+        /// <returns>the user id </returns>
+        Task<string> SaveUser(Claim claim);
         /// <summary>
         /// Get user id after the user name
         /// </summary>
@@ -41,5 +41,11 @@ namespace RecordVisitors
         /// <param name="toDate">to date </param>
         /// <returns></returns>
         Task<IRequestRecorded[]> UserRecordedUrls(string userId, DateTime fromDate, DateTime toDate);
+        /// <summary>
+        /// save history for the user
+        /// </summary>
+        /// <param name="rr">the  request that can be recorded </param>
+        /// <returns>nothing</returns>
+        Task SaveHistory(IRequestRecorded rr);
     }
 }
