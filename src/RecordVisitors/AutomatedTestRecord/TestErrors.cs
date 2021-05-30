@@ -70,7 +70,7 @@ namespace AutomatedTestRecord
             _factory = factory;
         }
         [Fact]
-        public async void TestFakeUser()
+        public void TestFakeUser()
         {
             _factory.RemoveServices = true;
             _factory.RemoveFakeUser = false;
