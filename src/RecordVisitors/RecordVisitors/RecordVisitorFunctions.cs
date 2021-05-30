@@ -20,7 +20,7 @@ namespace RecordVisitors
             var url = req.Path.Value;
             if (url == null)
                 return null;
-            if (url.StartsWith("api/", true, CultureInfo.InvariantCulture))
+            if (url.StartsWith("api/", StringComparison.InvariantCultureIgnoreCase))
                 return null;
             if (url.Contains("/api/", StringComparison.InvariantCultureIgnoreCase))
                 return null;
