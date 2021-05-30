@@ -2,12 +2,13 @@
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("AutomatedTestRecord")]
 
 namespace RecordVisitors
 {
 
-
-    public class RecordVisitorsMiddleware : IMiddleware
+    internal class RecordVisitorsMiddleware : IMiddleware
     {
         private readonly IRecordVisitorFunctions recordVisitorFunctions;
         private readonly IUsersRepository retrieveUsersRepository;

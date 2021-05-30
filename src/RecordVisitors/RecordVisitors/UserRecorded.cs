@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Reflection;
 
 namespace RecordVisitors
 {
-    public class UserRecorded
+    public class UserRecorded 
     {
-        static string nameApp ;
+        static string nameApp;
         static UserRecorded()
         {
             nameApp = Assembly.GetEntryAssembly().FullName;
@@ -14,22 +13,15 @@ namespace RecordVisitors
         public UserRecorded()
         {
             this.dateRecorded = DateTime.UtcNow;
-            
+
             this.IdentifierApp = $"{Environment.MachineName}_{Environment.CurrentDirectory}_{nameApp}";
             ID = Guid.NewGuid().ToString();
         }
         public string ID { get; set; }
         public string UserName { get; set; }
         public string IdentifierApp { get; set; }
-        
+
 
         public DateTime dateRecorded { get; set; }
-    }
-    public class UserRecordVisitors : DbContext
-    {
-        public UserRecordVisitors(DbContextOptions<UserRecordVisitors> options)
-            : base(options)
-        { }
-        public DbSet<UserRecorded> UserRecorded { get; set; }
     }
 }

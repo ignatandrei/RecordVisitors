@@ -7,24 +7,24 @@ using System.Threading.Tasks;
 
 namespace RecordVisitors
 {
-    public class UsersRepository : IUsersRepository
+    class UsersRepository : IUsersRepository
     {
         static SemaphoreSlim ss = new SemaphoreSlim(1, 1);
         public bool RecordJustLatest { get; set; }
-        DbContextOptions<UserRecordVisitors> options;
-        public UsersRepository(DbContextOptions<UserRecordVisitors> options= null)
+        DbContextOptions<UserRecordVisitorsContext> options;
+        public UsersRepository(DbContextOptions<UserRecordVisitorsContext> options= null)
         {
             RecordJustLatest = true;
             this.options = options;
             if(this.options == null)
-                this.options = new DbContextOptionsBuilder<UserRecordVisitors>()
+                this.options = new DbContextOptionsBuilder<UserRecordVisitorsContext>()
                 .UseInMemoryDatabase(databaseName: "AndreiIgnatRecord")
                 .Options;
 
         }
         public async Task<UserRecorded[]> GetClaims(uint minutesBeforeNow)
         {
-            using (var cnt = new UserRecordVisitors(options))
+            using (var cnt = new UserRecordVisitorsContext(options))
             {
                 var date = DateTime.UtcNow.AddMinutes(-minutesBeforeNow);
 
@@ -47,7 +47,7 @@ namespace RecordVisitors
                 if (RecordJustLatest)
                 {
 
-                    using (var cnt = new UserRecordVisitors(options))
+                    using (var cnt = new UserRecordVisitorsContext(options))
                     {
                         var existingRecord = await cnt
                             .UserRecorded
@@ -62,7 +62,7 @@ namespace RecordVisitors
                         }
                     }
                 }
-                using (var cnt = new UserRecordVisitors(options))
+                using (var cnt = new UserRecordVisitorsContext(options))
                 {
                     cnt.UserRecorded.Add(ur);
                     return await cnt.SaveChangesAsync();
