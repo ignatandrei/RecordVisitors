@@ -12,10 +12,12 @@ namespace RecordVisitors
         static SemaphoreSlim ss = new SemaphoreSlim(1, 1);
         public bool RecordJustLatest { get; set; }
         DbContextOptions<UserRecordVisitors> options;
-        public UsersRepository()
+        public UsersRepository(DbContextOptions<UserRecordVisitors> options= null)
         {
             RecordJustLatest = true;
-            options = new DbContextOptionsBuilder<UserRecordVisitors>()
+            this.options = options;
+            if(this.options == null)
+                this.options = new DbContextOptionsBuilder<UserRecordVisitors>()
                 .UseInMemoryDatabase(databaseName: "AndreiIgnatRecord")
                 .Options;
 
