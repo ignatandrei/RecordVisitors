@@ -22,6 +22,9 @@ namespace RecordVisitors
                 return null;
             if (url.StartsWith("api/", true, CultureInfo.InvariantCulture))
                 return null;
+            if (url.Contains("/api/", StringComparison.InvariantCultureIgnoreCase))
+                return null;
+
             //maybe find that url contains html ?             
             var rr = new RequestRecorded();
             rr.URL = url;
