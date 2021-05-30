@@ -30,6 +30,7 @@
 
   <PropertyGroup>
     <Version>2021.5.29.1730</Version>
+    <PackageVersion>2021.5.29.1730</PackageVersion>
     <Authors>Andrei Ignat</Authors>
     <Description>This package help you record your visitors</Description>
     <Title>Record Visitors</Title>
