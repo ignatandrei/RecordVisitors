@@ -7,21 +7,19 @@ namespace RecordVisitors
 {
     public class RecordVisitorFunctions : IRecordVisitorFunctions
     {
-        public RecordVisitorFunctions()
-        {
-            GetUser = cnt =>
-            {
-                string name = cnt.User?.Identity?.Name;
-                if (name != null)
-                {
-                    return new Claim("user", name);
-                }
-                return cnt.User?.Claims.FirstOrDefault();
-            };
-
-        }
         public Func<HttpContext, Claim> GetUser { get; set; }
 
+        Claim IRecordVisitorFunctions.GetUser(HttpContext cnt)
+        {
 
+
+            string name = cnt.User?.Identity?.Name;
+            if (name != null)
+            {
+                return new Claim("user", name);
+            }
+            return cnt.User?.Claims.FirstOrDefault();
+
+        }
     }
 }

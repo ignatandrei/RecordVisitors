@@ -6,6 +6,6 @@ namespace RecordVisitors
 {
     public interface IRecordVisitorFunctions
     {
-        Func<HttpContext, Claim> GetUser { get; set; }
+        Claim GetUser(HttpContext context) ;
     }
 }
