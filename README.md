@@ -51,9 +51,15 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 Then browse to /recordVisitors/AllVisitors5Min
 
+You can see also the classes documentation at https://ignatandrei.github.io/RecordVisitors/RecordVisitors/
+
+
 ## Customizable uses
 
-There are several classes that you can 
+There are several classes that you can customize
+
+
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
