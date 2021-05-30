@@ -56,8 +56,17 @@ You can see also the classes documentation at https://ignatandrei.github.io/Reco
 
 ## Customizable uses
 
-There are several classes that you can customize
+There are several interfaces that you can implement via DI
 
+
+| Name                                                        | Description                                            |
+| ----------------------------------------------------------- | ------------------------------------------------------ |
+| [IRecordVisitorFunctions](IRecordVisitorFunctions/index.md) | how to indentify the user                              |
+| [IUserRecorded](IUserRecorded/index.md)                     | the user recorded interface to store data              |
+| [IUsersRepository](IUsersRepository/index.md)               | the connection to the storage( database, csv , others) |
+
+
+The project comes with his implementation - however, you can add yours.
 
 
 ## Contributors ✨
