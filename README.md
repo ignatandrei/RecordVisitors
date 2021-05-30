@@ -37,6 +37,13 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     app.UseRecordVisitors();
     //not necessary
     app.UseAuthorization();
+    //code omitted
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllers();
+        endpoints.UseVisitors();
+    });
+
 
 }
 

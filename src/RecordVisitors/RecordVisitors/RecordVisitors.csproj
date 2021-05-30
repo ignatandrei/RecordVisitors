@@ -55,5 +55,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <DocumentationFile>\src\RecordVisitors\RecordVisitors\RecordVisitors.xml</DocumentationFile>
   </PropertyGroup>
 </Project>

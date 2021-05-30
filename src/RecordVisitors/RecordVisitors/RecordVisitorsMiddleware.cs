@@ -24,7 +24,7 @@ namespace RecordVisitors
             if (claim == null)
                 return;
             UserComing?.Invoke(this, claim);
-            await retrieveUsersRepository.SaveClaim(claim);
+            await retrieveUsersRepository.SaveUser(claim);
             await next(context);
         }
 

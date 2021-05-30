@@ -22,7 +22,7 @@ namespace RecordVisitors
                 .Options;
 
         }
-        public async Task<IUserRecorded[]> GetClaims(uint minutesBeforeNow)
+        public async Task<IUserRecorded[]> GetUsers(uint minutesBeforeNow)
         {
             using (var cnt = new UserRecordVisitorsContext(options))
             {
@@ -36,7 +36,7 @@ namespace RecordVisitors
             }
         }
 
-        public async Task<int> SaveClaim(Claim c)
+        public async Task<int> SaveUser(Claim c)
         {
             try
             {
