@@ -7,7 +7,7 @@ namespace RecordVisitors
     {
         bool RecordJustLatest { get; set; }
 
-        Task<UserRecorded[]> GetClaims(uint minutesBeforeNow);
+        Task<IUserRecorded[]> GetClaims(uint minutesBeforeNow);
         Task<int> SaveClaim(Claim c);
     }
 }

@@ -5,7 +5,7 @@ using System.Security.Claims;
 
 namespace RecordVisitors
 {
-    public class RecordVisitorFunctions : IRecordVisitorFunctions
+    class RecordVisitorFunctions : IRecordVisitorFunctions
     {
         public Func<HttpContext, Claim> GetUser { get; set; }
 

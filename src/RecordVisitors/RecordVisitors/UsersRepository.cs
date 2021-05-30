@@ -22,7 +22,7 @@ namespace RecordVisitors
                 .Options;
 
         }
-        public async Task<UserRecorded[]> GetClaims(uint minutesBeforeNow)
+        public async Task<IUserRecorded[]> GetClaims(uint minutesBeforeNow)
         {
             using (var cnt = new UserRecordVisitorsContext(options))
             {

@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace RecordVisitors
 {
-    public class UserRecorded 
+    class UserRecorded : IUserRecorded
     {
         static string nameApp;
         static UserRecorded()
