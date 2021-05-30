@@ -11,6 +11,11 @@ if ($xml.Project.PropertyGroup.Version -eq $null)
 $xml.SelectNodes("/Project/PropertyGroup/Version")[0].InnerText = $version 
 $xml.Save($fileName)
 
+#reading again
+$xml=[xml](get-content $fileName)
+Write-Host "Version of " $fileName " is " $xml.Project.PropertyGroup.Version
+
+
 }
 
 $version = Get-Date -Format "yyyy.MM.dd.Hmm"
