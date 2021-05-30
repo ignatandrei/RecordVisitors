@@ -93,9 +93,10 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## Links
 
-- Project homepage: https://record-visitors.readthedocs.io/en/latest/ (or simple https://ignatandrei.github.io/RecordVisitors/)
+- Project homepage: https://github.com/ignatandrei/RecordVisitors 
 - Repository: https://github.com/ignatandrei/RecordVisitors/
 - Issue tracker: https://github.com/ignatandrei/RecordVisitors/issues
+- Documentation: Project homepage: https://record-visitors.readthedocs.io/en/latest/ (or simple https://ignatandrei.github.io/RecordVisitors/)
 - Blog: http://msprogrammer.serviciipeweb.ro/category/recordvisitors/ 
 
 ## Licence
