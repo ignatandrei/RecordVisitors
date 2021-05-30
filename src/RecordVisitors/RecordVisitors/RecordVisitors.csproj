@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="ThisAssembly" Version="1.0.8" />
     <None Include="../../../readme.md" Pack="true" PackagePath="\" />
     <None Include="../../../docs/rv.png" Pack="true" PackagePath="\" />
   </ItemGroup>
