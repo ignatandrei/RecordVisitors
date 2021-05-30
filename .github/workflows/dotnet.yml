@@ -54,7 +54,7 @@ jobs:
     - name: Pack
       run: |
         cd src/RecordVisitors/
-        # dotnet pwsh setVersion.ps1
+        dotnet pwsh setVersion.ps1
         cd RecordVisitors
         dotnet pack -o nugetPackages 
 

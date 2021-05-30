@@ -16,5 +16,6 @@ $xml.Save($fileName)
 $version = Get-Date -Format "yyyy.MM.dd.Hmm"
 Get-ChildItem -Path .\ -Filter *.csproj -Recurse -File -Name| ForEach-Object {
 
-WriteVersion $_  $version
+        WriteVersion $_  $version
+
 }
