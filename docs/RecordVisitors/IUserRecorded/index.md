@@ -9,7 +9,7 @@
 
 **Namespace:** [RecordVisitors](../index.md)  
 **Assembly:** RecordVisitors  
-**Assembly Version:** 2021.5.29.1730+6f8cc97bbc97858c52dad381fea079ab8b5191ce
+**Assembly Version:** 1.0.0+941d3002b81283b9d5c598cff49e5898a83bf6f6
 
 the user recorded interface to store data
 

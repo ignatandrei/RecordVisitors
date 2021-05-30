@@ -50,7 +50,13 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 ```
 
-Then browse to /recordVisitors/AllVisitors5Min
+Then browse to /recordVisitors/AllVisitors5Min or /recordVisitors/AllVisitors/5
+
+
+You can see also the history for the URL that the user have browsed : goto 
+/recordVisitors/UserHistory/{userId}/{dateFrom:datetime:regex(\\d{{4}}-\\d{{2}}-\\d{{2}})}/{dateTo?}
+
+( to find the user id , you can also goto /recordVisitors/GetUserId/{userName})
 
 You can see also the classes documentation at https://ignatandrei.github.io/RecordVisitors/RecordVisitors/
 
@@ -93,9 +99,10 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## Links
 
-- Project homepage: https://record-visitors.readthedocs.io/en/latest/ (or simple https://ignatandrei.github.io/RecordVisitors/)
+- Project homepage: https://github.com/ignatandrei/RecordVisitors 
 - Repository: https://github.com/ignatandrei/RecordVisitors/
 - Issue tracker: https://github.com/ignatandrei/RecordVisitors/issues
+- Documentation: Project homepage: https://record-visitors.readthedocs.io/en/latest/ (or simple https://ignatandrei.github.io/RecordVisitors/)
 - Blog: http://msprogrammer.serviciipeweb.ro/category/recordvisitors/ 
 
 ## Licence

@@ -9,7 +9,7 @@
 
 **Namespace:** [RecordVisitors](../index.md)  
 **Assembly:** RecordVisitors  
-**Assembly Version:** 2021.5.29.1730+6f8cc97bbc97858c52dad381fea079ab8b5191ce
+**Assembly Version:** 1.0.0+941d3002b81283b9d5c598cff49e5898a83bf6f6
 
 the connection to the storage( database, csv , others)
 
@@ -25,10 +25,13 @@ public interface IUsersRepository
 
 ## Methods
 
-| Name                                   | Description         |
-| -------------------------------------- | ------------------- |
-| [GetUsers(uint)](methods/GetUsers.md)  | obtain latest users |
-| [SaveUser(Claim)](methods/SaveUser.md) | save the user       |
+| Name                                                                        | Description                       |
+| --------------------------------------------------------------------------- | --------------------------------- |
+| [GetUserId(string)](methods/GetUserId.md)                                   | Get user id after the user name   |
+| [GetUsers(uint)](methods/GetUsers.md)                                       | obtain latest users               |
+| [SaveHistory(IRequestRecorded)](methods/SaveHistory.md)                     | save history for the user         |
+| [SaveUser(Claim)](methods/SaveUser.md)                                      | save the user                     |
+| [UserRecordedUrls(string, DateTime, DateTime)](methods/UserRecordedUrls.md) | obtain visitors from date to date |
 
 ___
 

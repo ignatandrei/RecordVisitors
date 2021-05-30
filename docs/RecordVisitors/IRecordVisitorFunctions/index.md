@@ -9,7 +9,7 @@
 
 **Namespace:** [RecordVisitors](../index.md)  
 **Assembly:** RecordVisitors  
-**Assembly Version:** 2021.5.29.1730+6f8cc97bbc97858c52dad381fea079ab8b5191ce
+**Assembly Version:** 1.0.0+941d3002b81283b9d5c598cff49e5898a83bf6f6
 
 how to indentify the user
 
@@ -21,6 +21,7 @@ public interface IRecordVisitorFunctions
 
 | Name                                       | Description                                                                          |
 | ------------------------------------------ | ------------------------------------------------------------------------------------ |
+| [GetUrl(HttpContext)](methods/GetUrl.md)   | Gets the url to be saved into the database                                           |
 | [GetUser(HttpContext)](methods/GetUser.md) | obtain the user used to store \- [UserName](../IUserRecorded/properties/UserName.md) |
 
 ___

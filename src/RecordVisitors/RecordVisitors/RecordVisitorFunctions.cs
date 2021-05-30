@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 
@@ -19,6 +20,9 @@ namespace RecordVisitors
             var url = req.Path.Value;
             if (url == null)
                 return null;
+            if (url.StartsWith("api/", true, CultureInfo.InvariantCulture))
+                return null;
+            //maybe find that url contains html ?             
             var rr = new RequestRecorded();
             rr.URL = url;
             rr.AdditionalData = null;            

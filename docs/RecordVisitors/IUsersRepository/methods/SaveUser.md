@@ -10,12 +10,12 @@
 **Declaring Type:** [IUsersRepository](../index.md)  
 **Namespace:** [RecordVisitors](../../index.md)  
 **Assembly:** RecordVisitors  
-**Assembly Version:** 2021.5.29.1730+6f8cc97bbc97858c52dad381fea079ab8b5191ce
+**Assembly Version:** 1.0.0+941d3002b81283b9d5c598cff49e5898a83bf6f6
 
 save the user
 
 ```csharp
-public Task<int> SaveUser(Claim claim);
+public Task<string> SaveUser(Claim claim);
 ```
 
 ## Parameters
@@ -26,9 +26,9 @@ claim of the user
 
 ## Returns
 
-Task\<int\>
+Task\<string\>
 
-how many records were affected when save ( usual 1) 
+the user id 
 
 ___
 

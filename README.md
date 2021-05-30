@@ -50,7 +50,13 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 ```
 
-Then browse to /recordVisitors/AllVisitors5Min
+Then browse to /recordVisitors/AllVisitors5Min or /recordVisitors/AllVisitors/5
+
+
+You can see also the history for the URL that the user have browsed : goto 
+/recordVisitors/UserHistory/{userId}/{dateFrom:datetime:regex(\\d{{4}}-\\d{{2}}-\\d{{2}})}/{dateTo?}
+
+( to find the user id , you can also goto /recordVisitors/GetUserId/{userName})
 
 You can see also the classes documentation at https://ignatandrei.github.io/RecordVisitors/RecordVisitors/
 

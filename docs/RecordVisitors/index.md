@@ -18,6 +18,7 @@
 | Name                                                        | Description                                            |
 | ----------------------------------------------------------- | ------------------------------------------------------ |
 | [IRecordVisitorFunctions](IRecordVisitorFunctions/index.md) | how to indentify the user                              |
+| [IRequestRecorded](IRequestRecorded/index.md)               | request of the user                                    |
 | [IUserRecorded](IUserRecorded/index.md)                     | the user recorded interface to store data              |
 | [IUsersRepository](IUsersRepository/index.md)               | the connection to the storage( database, csv , others) |
 
