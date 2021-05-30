@@ -74,5 +74,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: Docs_${{github.run_number}}
-        path: src/RecordVisitors/RecordVisitors/docs
+        path: src/RecordVisitors/docs
         retention-days: 1
