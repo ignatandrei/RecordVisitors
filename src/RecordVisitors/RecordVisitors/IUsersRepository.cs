@@ -26,5 +26,11 @@ namespace RecordVisitors
         /// <param name="claim">claim of the user</param>
         /// <returns>how many records were affected when save ( usual 1) </returns>
         Task<int> SaveUser(Claim claim);
+        /// <summary>
+        /// Get user id after the user name
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns>user id or null </returns>
+        Task<string> GetUserId(string userName);
     }
 }

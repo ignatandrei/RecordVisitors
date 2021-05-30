@@ -16,5 +16,13 @@ namespace RecordVisitors
         /// <param name="context"></param>
         /// <returns>claim for the user</returns>
         Claim GetUser(HttpContext context) ;
+        /*
+        /// <summary>
+        /// Gets the url to be saved into the database
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        HttpRequest GetUrl(HttpContext context);
+        */
     }
 }

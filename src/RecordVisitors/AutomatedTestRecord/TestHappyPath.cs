@@ -24,7 +24,7 @@ namespace AutomatedTestRecord
             var response = await client.GetStringAsync("/recordVisitors/AllVisitors5Min");
 
             // Assert
-            var str = "Jean Irvine";
+            var str = "JeanIrvine";
             Assert.True(response.Contains(str),$"{response} must contain {str}");
                 
         }
@@ -38,8 +38,26 @@ namespace AutomatedTestRecord
             var response = await client.GetStringAsync("/recordVisitors/AllVisitors/5");
 
             // Assert
-            var str = "Jean Irvine";
+            var str = "JeanIrvine";
             Assert.True(response.Contains(str), $"{response} must contain {str}");
+
+        }
+        [Fact]
+        public async void TestEndpointGetUser()
+        {
+            // Arrange
+            var client = _factory.CreateClient();
+
+            // Act
+            var response = await client.GetStringAsync("/recordVisitors/GetUserId/JeanIrvine");
+
+            Assert.NotNull(response);
+            Assert.NotEmpty(response);
+            // Assert
+            if (!Guid.TryParse(response, out var g))
+            {
+                Assert.True(false, $"the {response} should be a guid");
+            };
 
         }
     }

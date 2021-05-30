@@ -63,6 +63,12 @@ namespace RecordVisitors
                 var data = await repo.GetUsers(val);
                 await app.Response.WriteAsJsonAsync(data);
             });
+            endpoints.MapGet("/recordVisitors/GetUserId/{userName:alpha}", async app => {
+
+                var val = app.Request.RouteValues["userName"]?.ToString();
+                var data = await repo.GetUserId(val);
+                await app.Response.WriteAsync(data);
+            });
             return endpoints;
         }
         /// <summary>

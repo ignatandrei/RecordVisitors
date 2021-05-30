@@ -17,7 +17,7 @@ namespace SampleWeb
     {
         public bool ReturnFalse;
         const string userId = "phv";
-        const string userName = "Jean Irvine";
+        const string userName = "JeanIrvine";
         const string userRole = "ProductManager";
 
         public MockAuthenticatedUser(

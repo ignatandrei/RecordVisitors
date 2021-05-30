@@ -12,11 +12,11 @@ namespace RecordVisitors
         static SemaphoreSlim ss = new SemaphoreSlim(1, 1);
         public bool RecordJustLatest { get; set; }
         DbContextOptions<UserRecordVisitorsContext> options;
-        public UsersRepository(DbContextOptions<UserRecordVisitorsContext> options= null)
+        public UsersRepository(DbContextOptions<UserRecordVisitorsContext> options = null)
         {
             RecordJustLatest = true;
             this.options = options;
-            if(this.options == null)
+            if (this.options == null)
                 this.options = new DbContextOptionsBuilder<UserRecordVisitorsContext>()
                 .UseInMemoryDatabase(databaseName: "AndreiIgnatRecord")
                 .Options;
@@ -77,5 +77,14 @@ namespace RecordVisitors
 
         }
 
+        public async Task<string> GetUserId(string userName)
+        {
+            using (var cnt = new UserRecordVisitorsContext(options))
+            {
+                Console.WriteLine(cnt.UserRecorded.FirstOrDefault().UserName);
+                var user = await cnt.UserRecorded.FirstOrDefaultAsync(it => it.UserName == userName);
+                return user?.ID;
+            }
+        }
     }
 }

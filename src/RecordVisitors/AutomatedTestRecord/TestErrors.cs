@@ -92,7 +92,7 @@ namespace AutomatedTestRecord
             var response = await client.GetStringAsync("/recordVisitors/AllVisitors5Min");
 
             // Assert
-            var str = "Jean Irvine";
+            var str = "JeanIrvine";
             Assert.True(response.Contains(str), $"{response} must contain {str}");
 
         }
