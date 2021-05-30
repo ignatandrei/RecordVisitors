@@ -60,3 +60,15 @@ jobs:
         name: RecordVisitorsNuget_${{github.run_number}}
         path: src/RecordVisitors/RecordVisitors/nugetPackages
         retention-days: 1
+  
+    - name: Generating documentation
+      run: |
+        cd src/RecordVisitors/        
+        dotnet mddocs apireference --assembly .\RecordVisitors\bin\Debug\net5.0\RecordVisitors.dll -o docs
+
+    - name: 'Upload Docs'
+      uses: actions/upload-artifact@v2
+      with:
+        name: Docs_${{github.run_number}}
+        path: src/RecordVisitors/RecordVisitors/docs
+        retention-days: 1
