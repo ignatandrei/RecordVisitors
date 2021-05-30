@@ -10,6 +10,17 @@ namespace RecordVisitors
 
     internal class RecordVisitorsMiddleware : IMiddleware
     {
+        static RecordVisitorsMiddleware()
+        {
+            try
+            {
+                Console.WriteLine($"{ThisAssembly.Project.AssemblyName} version {ThisAssembly.Info.Version}");
+            }
+            catch
+            {
+                //do nothing - if console is not available...
+            }
+        }
         private readonly IRecordVisitorFunctions recordVisitorFunctions;
         private readonly IUsersRepository retrieveUsersRepository;
 
