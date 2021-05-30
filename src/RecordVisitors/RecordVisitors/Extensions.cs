@@ -51,9 +51,16 @@ namespace RecordVisitors
             {
                 throw new ArgumentException("please add IUsersRepository DI : did you add services.AddRecordVisitorsDefault(); ? ");
             }
-            endpoints.Map("/recordVisitors/AllVisitors5Min", async app => {
+            endpoints.MapGet("/recordVisitors/AllVisitors5Min", async app => {
                 
                 var data = await repo.GetUsers(5);
+                await app.Response.WriteAsJsonAsync(data);
+            });
+            endpoints.MapGet("/recordVisitors/AllVisitors/{time:int}", async app => {
+
+                var time = app.Request.RouteValues["time"]?.ToString();
+                var val = uint.Parse(time);
+                var data = await repo.GetUsers(val);
                 await app.Response.WriteAsJsonAsync(data);
             });
             return endpoints;

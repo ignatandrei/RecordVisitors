@@ -28,5 +28,19 @@ namespace AutomatedTestRecord
             Assert.True(response.Contains(str),$"{response} must contain {str}");
                 
         }
+        [Fact]
+        public async void TestEndpointMoreThan5Minutes()
+        {
+            // Arrange
+            var client = _factory.CreateClient();
+
+            // Act
+            var response = await client.GetStringAsync("/recordVisitors/AllVisitors/5");
+
+            // Assert
+            var str = "Jean Irvine";
+            Assert.True(response.Contains(str), $"{response} must contain {str}");
+
+        }
     }
 }
