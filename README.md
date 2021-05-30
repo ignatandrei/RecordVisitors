@@ -14,7 +14,7 @@
 
 This project helps you to record what visitors have you on the site. It does not enforce [authentication](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-5.0)
 
-You can see the latest 5 minutes visitors by browsing to /recordVisitors/AllVisitors5Min
+You can see the latest 5 minutes visitors by browsing to /recordVisitors/AllVisitors5Min or /recordVisitors/AllVisitors/5 
 
 # How to use it
 
