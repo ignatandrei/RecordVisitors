@@ -81,9 +81,21 @@ namespace RecordVisitors
         {
             using (var cnt = new UserRecordVisitorsContext(options))
             {
-                Console.WriteLine(cnt.UserRecorded.FirstOrDefault().UserName);
                 var user = await cnt.UserRecorded.FirstOrDefaultAsync(it => it.UserName == userName);
                 return user?.ID;
+            }
+        }
+
+        public async Task<IRequestRecorded[]> UserRecordedUrls(string userId, DateTime fromDate, DateTime toDate)
+        {
+            using (var cnt = new UserRecordVisitorsContext(options))
+            {
+                var data = await cnt.RequestRecorded
+                    .Where(it => it.UserRecordedId== userId)
+                    .Where(it=>it.DateRecorded >= fromDate)
+                    .Where(it=> it.DateRecorded<=fromDate)
+                    .ToArrayAsync();
+                return data;
             }
         }
     }

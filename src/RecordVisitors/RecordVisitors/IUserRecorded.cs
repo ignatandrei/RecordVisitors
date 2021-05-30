@@ -24,5 +24,7 @@ namespace RecordVisitors
         ///  <see cref="IRecordVisitorFunctions.GetUser(Microsoft.AspNetCore.Http.HttpContext)"/>
         /// </summary>
         string UserName { get; set; }
+
+
     }
 }

@@ -8,5 +8,7 @@ namespace RecordVisitors
             : base(options)
         { }
         public DbSet<UserRecorded> UserRecorded { get; set; }
+
+        public DbSet<RequestRecorded> RequestRecorded { get; set; }
     }
 }

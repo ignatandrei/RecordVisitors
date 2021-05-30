@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace RecordVisitors
@@ -32,5 +33,13 @@ namespace RecordVisitors
         /// <param name="userName"></param>
         /// <returns>user id or null </returns>
         Task<string> GetUserId(string userName);
+        /// <summary>
+        /// obtain visitors from date to date
+        /// </summary>
+        /// <param name="userId">user id to retrieve history</param>
+        /// <param name="fromDate">from date</param>
+        /// <param name="toDate">to date </param>
+        /// <returns></returns>
+        Task<IRequestRecorded[]> UserRecordedUrls(string userId, DateTime fromDate, DateTime toDate);
     }
 }
