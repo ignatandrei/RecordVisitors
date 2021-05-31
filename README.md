@@ -106,7 +106,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 - Results of tests in BDD format : https://record-visitors.readthedocs.io/en/latest/BDD/LightBDDReport/ 
 - Repository: https://github.com/ignatandrei/RecordVisitors/
 - Issue tracker: https://github.com/ignatandrei/RecordVisitors/issues
-- Documentation: Project homepage: https://record-visitors.readthedocs.io/en/latest/ 
+- Documentation: https://record-visitors.readthedocs.io/en/latest/ 
 - Blog: http://msprogrammer.serviciipeweb.ro/category/recordvisitors/ 
 
 ## Licence
