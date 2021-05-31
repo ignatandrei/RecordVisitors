@@ -56,17 +56,22 @@ namespace AutomatedTestRecord
                     .Select(it => it.Info.Parent)
                     .Distinct()
                     .ToArray();
-            sb.AppendLine("# Results of tests");
+            sb.AppendLine("");
+            sb.AppendLine("# Results of tests")
+            sb.AppendLine("");
             foreach (var par in parents)
             {
                 var items = categories.Where(it => it.Info.Parent == par).ToArray();
                 if (items.Length == 0)
                     continue;
+                sb.AppendLine("");
                 sb.AppendLine($"## {par.Name}");
+                sb.AppendLine("");
                 foreach (var sc in items)
                 {
-
+                    sb.AppendLine("");
                     sb.AppendLine($"### {sc.Info.ToString()}");
+                    sb.AppendLine("");
                     sb.AppendLine("| Number| Name|Status|Comments|");
                     sb.AppendLine("| ----------- | ----------- |----------- |----------- |");
                     foreach (var step in sc.GetSteps())
