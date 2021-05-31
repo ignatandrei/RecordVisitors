@@ -1,16 +1,22 @@
+
 # TestErrors
+
 ## TestNoServicesAdded
 | Number| Name|Status|Comments|
 | ----------- | ----------- |----------- |----------- |
 |1|GIVEN Factory [RemoveServices: "True"] [RemoveFakeUser: "False"]|Passed||
 |2|THEN The Application Will Have Error|Passed||
+
+
 # TestHappyPath
+
 ## TestFakeUser
 | Number| Name|Status|Comments|
 | ----------- | ----------- |----------- |----------- |
 |1|GIVEN The Application Starts|Passed|!!!Start application!!!!|
 |2|WHEN The User Access The Url "/recordVisitors/AllVisitors5Min"|Passed||
 |3|THEN The Response Should Contain [str: "JeanIrvine"]|Passed||
+
 ## TestEndpointGetHistoryUser
 | Number| Name|Status|Comments|
 | ----------- | ----------- |----------- |----------- |
