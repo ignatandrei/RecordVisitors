@@ -1,13 +1,21 @@
+using LightBDD.Framework;
+using LightBDD.XUnit2;
 using Microsoft.AspNetCore.Mvc.Testing;
 using SampleWeb;
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
-
+using LightBDD.Framework.Scenarios;
+[assembly: LightBddScopeAttribute]
 namespace AutomatedTestRecord
 {
-    
-    public class TestHappyPath : IClassFixture<WebApplicationFactory<Startup>>
+    [FeatureDescription(
+@"In order to access personal data
+As an user
+I want to login into system")]
+    [Label("Story-1")]
+    public class TestHappyPath : FeatureFixture, IClassFixture<WebApplicationFactory<Startup>>
     {
         private readonly WebApplicationFactory<Startup> _factory;
 
@@ -15,9 +23,38 @@ namespace AutomatedTestRecord
         {
             _factory = factory;
         }
+        HttpClient client;
+        string response;
+        private async Task Given_The_Application_Starts()
+        {
+            StepExecution.Current.Comment("!!!Start application!!!!");
+            await Task.Delay(1);
+            client = _factory.CreateClient();
+        }
+        private async Task When_The_User_Access_The_Url(string url)
+        {
+            response = await client.GetStringAsync(url);
+        }
+        private async Task Then_The_Response_Should_Contain(string str)
+        {
+            await Task.Delay(1);
+            Assert.True(response.Contains(str), $"{response} must contain {str}");
+        }
+        [Scenario]
+        [Label("Ticket-1")]
+        [ScenarioCategory("HappyPath")]
+        public async void TestFakeUser1()
+        {
+            await Runner.RunScenarioAsync(
+                    _ => Given_The_Application_Starts(),
+                    _ => When_The_User_Access_The_Url("/recordVisitors/AllVisitors5Min"),
+                    _ => Then_The_Response_Should_Contain("JeanIrvine")
+                    );
+        }
         [Fact]
         public async void TestFakeUser()
         {
+                
             // Arrange
             var client = _factory.CreateClient();
 
