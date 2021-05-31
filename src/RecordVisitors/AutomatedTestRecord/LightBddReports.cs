@@ -22,7 +22,7 @@ namespace AutomatedTestRecord
                 .AddFileWriter<XmlReportFormatter>(@"~/Reports/FeaturesReport.xml")
                 .AddFileWriter<PlainTextReportFormatter>("~/Reports/{TestDateTimeUtc:yyyy-MM-dd-HH_mm_ss}_FeaturesReport.txt")
                 .AddFileWriter<HtmlReportFormatter>(@"~/Reports/LightBDDHtmlReport.html")
-                .AddFileWriter<MarkdownReportFormatter>(@"~/Reports/LightBDDHtmlReport.md")
+                .AddFileWriter<MarkdownReportFormatter>(@"~/Reports/LightBDDReport.md")
                 ;
 
         }
