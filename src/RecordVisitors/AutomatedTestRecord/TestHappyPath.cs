@@ -104,7 +104,7 @@ namespace AutomatedTestRecord
         }
 
         [Scenario]
-        [ScenarioCategory("VisitorHsitory")]
+        [ScenarioCategory("VisitorHistory")]
         public async void TestEndpointGetHistoryUser()
         {
             await Runner
@@ -118,6 +118,23 @@ namespace AutomatedTestRecord
                 .RunAsync();
 
             
+
+        }
+        [Scenario]
+        [ScenarioCategory("VisitorHistory")]
+        public async void TestEndpointMyHistory()
+        {
+            await Runner
+                .AddSteps(_ => It_should_have_UserId("JeanIrvine"))
+                .AddAsyncSteps(_ =>
+                When_The_User_Access_The_Url(
+                    $"/recordVisitors/MyHistory/1970-04-16/" + DateTime.UtcNow.AddDays(1).ToString("yyyy-MM-dd")
+                    )
+                )
+                .AddSteps(Then_The_Response_Should_Be_Something)
+                .RunAsync();
+
+
 
         }
     }

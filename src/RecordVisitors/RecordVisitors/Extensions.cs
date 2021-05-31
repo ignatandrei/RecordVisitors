@@ -51,6 +51,12 @@ namespace RecordVisitors
             {
                 throw new ArgumentException("please add IUsersRepository DI : did you add services.AddRecordVisitorsDefault(); ? ");
             }
+            var func = endpoints.ServiceProvider.GetService<IRecordVisitorFunctions>();
+            if (func == null)
+            {
+                throw new ArgumentException("please add RecordVisitorFunctions DI : did you add services.AddRecordVisitorsDefault(); ? ");
+            }
+
             endpoints.MapGet("/recordVisitors/AllVisitors5Min", async app => {
                 
                 var data = await repo.GetUsers(5);
@@ -68,6 +74,23 @@ namespace RecordVisitors
                 var val = app.Request.RouteValues["userName"]?.ToString();
                 var data = await repo.GetUserId(val);
                 await app.Response.WriteAsync(data);
+            });
+            endpoints.MapGet("/recordVisitors/MyHistory/{dateFrom:datetime:regex(\\d{{4}}-\\d{{2}}-\\d{{2}})}/{dateTo?}", async app => {
+
+                var userName = func.GetUser(app).Value;
+                var userID = await repo.GetUserId(userName);
+                var dateFromStr = app.Request.RouteValues["dateFrom"]?.ToString();
+                var dateToStr = app.Request.RouteValues["dateTo"]?.ToString();
+                var dateTo = DateTime.UtcNow.AddDays(2);
+                if (dateToStr != null)
+                {
+                    dateTo = DateTime.ParseExact(dateToStr, "yyyy-MM-dd", null);
+                }
+
+                var dateFrom = DateTime.ParseExact(dateFromStr, "yyyy-MM-dd", null);
+
+                var data = await repo.UserRecordedUrls(userID, dateFrom, dateTo);
+                await app.Response.WriteAsJsonAsync(data);
             });
             endpoints.MapGet("/recordVisitors/UserHistory/{userId}/{dateFrom:datetime:regex(\\d{{4}}-\\d{{2}}-\\d{{2}})}/{dateTo?}", async app => {
 
