@@ -33,11 +33,19 @@ namespace AutomatedTestRecord
         {
             var categories = GroupCategories(features);
             var sb = new StringBuilder();
-            foreach(var item in categories)
+            var parents = categories
+                    .Select(it => it.Info.Parent)
+                    .Distinct()
+                    .ToArray();
+            foreach (var par in parents)
             {
-                //sb.AppendLine($"# {item.Key}");
-                foreach(var sc in item)
+                var items = categories.Where(it => it.Info.Parent == par).ToArray();
+                if (items.Length == 0)
+                    continue;
+                sb.AppendLine($"# {par.Name}");
+                foreach (var sc in items)
                 {
+
                     sb.AppendLine($"## {sc.Info.ToString()}");
                     sb.AppendLine("| Number| Name|Status|");
                     sb.AppendLine("| ----------- | ----------- |----------- |");
@@ -69,13 +77,10 @@ namespace AutomatedTestRecord
                 }
             }
         }
-        private static IGrouping<string, IScenarioResult>[] GroupCategories(IEnumerable<IFeatureResult> features)
+        private static IScenarioResult[] GroupCategories(IEnumerable<IFeatureResult> features)
         {
             var f = features
                 .SelectMany(f => f.GetScenarios())
-                //.Select(it => it)
-                //.ToDictionary(it => it.Info.ToString(), it=>it);
-                .GroupBy(it => it.Info.ToString())                
                 .ToArray()
                 ;
             return f;

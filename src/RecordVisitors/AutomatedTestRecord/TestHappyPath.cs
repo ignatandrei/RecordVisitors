@@ -14,7 +14,7 @@ namespace AutomatedTestRecord
 @"In order to access personal data
 As an user
 I want to login into system")]
-    [Label("Story-1")]
+    [Label(nameof(TestHappyPath))]
     public class TestHappyPath : FeatureFixture, IClassFixture<WebApplicationFactory<Startup>>
     {
         private readonly WebApplicationFactory<Startup> _factory;
@@ -34,54 +34,42 @@ I want to login into system")]
         {
             response = await client.GetStringAsync(url);
         }
-        private async Task Then_The_Response_Should_Contain(string str)
-        {
-            await Task.Delay(1);
+        private void Then_The_Response_Should_Contain(string str)
+        {            
             Assert.True(response.Contains(str), $"{response} must contain {str}");
         }
         [Scenario]
-        [Label("TestEndPoint")]
-        [ScenarioCategory("HappyPath")]
-        public async void TestFakeUser1()
+        [ScenarioCategory("VisitorRecord")]
+        public async void TestFakeUser()
         {
             await Runner
                 .AddSteps(Given_The_Application_Starts)
                 .AddAsyncSteps(
-                    _ => When_The_User_Access_The_Url("/recordVisitors/AllVisitors5Min"),
+                    _ => When_The_User_Access_The_Url("/recordVisitors/AllVisitors5Min")
+                )
+                .AddSteps(
                     _ => Then_The_Response_Should_Contain("JeanIrvine")
+
                 )
                 .RunAsync();
                 
         }
-        [Fact]
-        public async void TestFakeUser()
-        {
+        //[Fact]
+        //public async void TestFakeUser()
+        //{
                 
-            // Arrange
-            var client = _factory.CreateClient();
+        //    // Arrange
+        //    var client = _factory.CreateClient();
 
-            // Act
-            var response = await client.GetStringAsync("/recordVisitors/AllVisitors5Min");
+        //    // Act
+        //    var response = await client.GetStringAsync("/recordVisitors/AllVisitors5Min");
 
-            // Assert
-            var str = "JeanIrvine";
-            Assert.True(response.Contains(str),$"{response} must contain {str}");
+        //    // Assert
+        //    var str = "JeanIrvine";
+        //    Assert.True(response.Contains(str),$"{response} must contain {str}");
                 
-        }
-        [Fact]
-        public async void TestEndpointMoreThan5Minutes()
-        {
-            // Arrange
-            var client = _factory.CreateClient();
-
-            // Act
-            var response = await client.GetStringAsync("/recordVisitors/AllVisitors/5");
-
-            // Assert
-            var str = "JeanIrvine";
-            Assert.True(response.Contains(str), $"{response} must contain {str}");
-
-        }
+        //}
+        
         [Fact]
         public async void TestEndpointGetUser()
         {
@@ -98,6 +86,11 @@ I want to login into system")]
             };
 
         }
+        //private CompositeStep Then_it_should_have_UserId()
+        //{
+        //    CompositeStep.DefineNew()
+        //        .AddStep(Given_The_Application_Starts)
+        //}
         private Task<string> GetUserId(string userName)
         {
             var client = _factory.CreateClient();            
