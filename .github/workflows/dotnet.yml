@@ -32,7 +32,7 @@ jobs:
     - name: Test
       run: |
         cd src/RecordVisitors
-        dotnet test --no-build --verbosity normal
+        dotnet test --no-build --verbosity normal --logger:"console;verbosity=normal"
     - name: code coverage
       run: |
         cd src/RecordVisitors
@@ -75,4 +75,11 @@ jobs:
       with:
         name: Docs_${{github.run_number}}
         path: src/RecordVisitors/docs
+        retention-days: 1
+
+    - name: 'Upload lightBDD'
+      uses: actions/upload-artifact@v2
+      with:
+        name: LightBDD_${{github.run_number}}
+        path: src/RecordVisitors/AutomatedTestRecord/bin/Debug/net5.0/Reports
         retention-days: 1
