@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 using LightBDD.Framework.Scenarios;
-[assembly: LightBddScopeAttribute]
+
 namespace AutomatedTestRecord
 {
     [FeatureDescription(
@@ -25,10 +25,9 @@ I want to login into system")]
         }
         HttpClient client;
         string response;
-        private async Task Given_The_Application_Starts()
+        private void Given_The_Application_Starts()
         {
             StepExecution.Current.Comment("!!!Start application!!!!");
-            await Task.Delay(1);
             client = _factory.CreateClient();
         }
         private async Task When_The_User_Access_The_Url(string url)
@@ -41,15 +40,18 @@ I want to login into system")]
             Assert.True(response.Contains(str), $"{response} must contain {str}");
         }
         [Scenario]
-        [Label("Ticket-1")]
+        [Label("TestEndPoint")]
         [ScenarioCategory("HappyPath")]
         public async void TestFakeUser1()
         {
-            await Runner.RunScenarioAsync(
-                    _ => Given_The_Application_Starts(),
+            await Runner
+                .AddSteps(Given_The_Application_Starts)
+                .AddAsyncSteps(
                     _ => When_The_User_Access_The_Url("/recordVisitors/AllVisitors5Min"),
                     _ => Then_The_Response_Should_Contain("JeanIrvine")
-                    );
+                )
+                .RunAsync();
+                
         }
         [Fact]
         public async void TestFakeUser()
