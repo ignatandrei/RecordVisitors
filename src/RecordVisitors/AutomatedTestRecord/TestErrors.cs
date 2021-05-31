@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 using Xunit;
 using Microsoft.Extensions.DependencyInjection;
 using RecordVisitors;
+using LightBDD.Framework;
+using System.Net.Http;
+using LightBDD.XUnit2;
+using LightBDD.Framework.Scenarios;
 
 namespace AutomatedTestRecord
 {
@@ -60,41 +64,87 @@ namespace AutomatedTestRecord
 
         }
     }
-    
-    public class TestErrors : IClassFixture<CustomWebApplicationFactory>
+    [FeatureDescription(@"test errors")]
+    [Label(nameof(TestErrors))]
+    public class TestErrors :  FeatureFixture,IClassFixture<CustomWebApplicationFactory>
     {
         private readonly CustomWebApplicationFactory _factory;
+        HttpClient client;
+        string response;
+        private void Then_The_Application_Will_Have_Error()
+        {
+            Assert.ThrowsAsync<ArgumentException>(async () =>
+            {
+                client = _factory.CreateClient();
+                await Task.Delay(3000);
+            }
+                );
+            //var ex = Record.ExceptionAsync( async () => 
+            //{
+            //    client = _factory.CreateClient();
+            //    await Task.Delay(3000);
+            //}
+            //    );
+            
+            //StepExecution.Current.Comment($"the exception is {ex}");
+            //Assert.IsType<ArgumentException>(ex);
+
+        }
+        private void Then_The_Response_Should_Be_Empty()
+        {
+            StepExecution.Current.Comment($"the response is {response}");
+            var length = response?.Length ?? 0;
+            Assert.True(length == 0, " the response should be empty");
+        }
+        private void Given_The_Application_Starts()
+        {
+            StepExecution.Current.Comment("!!!Start application!!!!");
+            client = _factory.CreateClient();
+        }
+        private void Given_Factory(bool RemoveServices ,bool RemoveFakeUser)
+        {
+            _factory.RemoveServices = RemoveServices;
+            _factory.RemoveFakeUser = RemoveFakeUser;
+
+        }
+
+        private async Task When_The_User_Access_The_Url(string url)
+        {
+            response = await client.GetStringAsync(url);
+        }
 
         public TestErrors(CustomWebApplicationFactory factory)
         {
             _factory = factory;
         }
-        [Fact]
-        public void TestFakeUser()
-        {
-            _factory.RemoveServices = true;
-            _factory.RemoveFakeUser = false;
-            var ex = Record.Exception(()=>_factory.CreateClient());
 
-            Assert.IsType<ArgumentException>(ex);
+        [Scenario]
+        [ScenarioCategory("VisitorRecord")]
+
+        public async void TestNoServicesAdded()
+        {
+            await Runner
+                .AddSteps(_=> Given_Factory(true,false))
+                .AddSteps(Then_The_Application_Will_Have_Error)
+                .RunAsync();
+
             
         }
-        [Fact]
-        public async void TestNoUser()
-        {
-            _factory.RemoveServices = false;
+        //[Scenario]
+        //[ScenarioCategory("VisitorRecord")]
+        //public async void TestNoUser()
+        //{
+        //    await Runner
+        //        .AddSteps(_ => Given_Factory(false, true))
+        //        .AddSteps(Given_The_Application_Starts)
+        //        .AddAsyncSteps(_=>When_The_User_Access_The_Url("/recordVisitors/AllVisitors5Min"))
+        //        .AddSteps(Then_The_Response_Should_Be_Empty)
+        //        .RunAsync();
+             
 
-            _factory.RemoveFakeUser= true;
-            // Arrange
-            var client = _factory.CreateClient();
+        //    //var str = "JeanIrvine";
+        //    //Assert.True(response.Contains(str), $"{response} must contain {str}");
 
-            // Act
-            var response = await client.GetStringAsync("/recordVisitors/AllVisitors5Min");
-
-            // Assert
-            var str = "JeanIrvine";
-            Assert.True(response.Contains(str), $"{response} must contain {str}");
-
-        }
+        //}
     }
 }

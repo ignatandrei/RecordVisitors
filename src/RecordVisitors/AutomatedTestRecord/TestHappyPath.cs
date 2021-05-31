@@ -10,10 +10,7 @@ using LightBDD.Framework.Scenarios;
 
 namespace AutomatedTestRecord
 {
-    [FeatureDescription(
-@"In order to access personal data
-As an user
-I want to login into system")]
+    [FeatureDescription(@"user see his details")]
     [Label(nameof(TestHappyPath))]
     public class TestHappyPath : FeatureFixture, IClassFixture<WebApplicationFactory<Startup>>
     {
