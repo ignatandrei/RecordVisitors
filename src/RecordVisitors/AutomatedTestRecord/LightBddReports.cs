@@ -57,7 +57,7 @@ namespace AutomatedTestRecord
                     .Distinct()
                     .ToArray();
             sb.AppendLine("");
-            sb.AppendLine("# Results of tests")
+            sb.AppendLine("# Results of tests");
             sb.AppendLine("");
             foreach (var par in parents)
             {
