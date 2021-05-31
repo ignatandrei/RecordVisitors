@@ -95,7 +95,7 @@ namespace RecordVisitors
                 var data = await cnt.RequestRecorded
                     .Where(it => it.UserRecordedId == userId)
                     .Where(it => it.DateRecorded >= fromDate)
-                    .Where(it => it.DateRecorded <= fromDate)
+                    .Where(it => it.DateRecorded <= toDate)
                     .ToArrayAsync();
                 return data;
             }

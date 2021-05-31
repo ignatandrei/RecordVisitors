@@ -38,6 +38,21 @@ I want to login into system")]
         {            
             Assert.True(response.Contains(str), $"{response} must contain {str}");
         }
+        private void Then_The_Response_Should_Be_Guid()
+        {
+            var b = Guid.TryParse(response, out var _);
+            Assert.True(b, $"{response} must be guid");
+
+        }
+        private void Then_The_Response_Should_Be_Something()
+        {
+            StepExecution.Current.Comment($"the response is:{response}");
+            Assert.NotNull(response);
+            Assert.NotEmpty(response);
+            Assert.True(response.Length > 5, $"the {response} should have a decent length");
+
+
+        }
         [Scenario]
         [ScenarioCategory("VisitorRecord")]
         public async void TestFakeUser()
@@ -54,10 +69,20 @@ I want to login into system")]
                 .RunAsync();
                 
         }
+        [Scenario]
+        [ScenarioCategory("VisitorRecord")]
+        public async void TestUserEndpoint()
+        {
+
+            await Runner
+                .AddSteps(_ => It_should_have_UserId("JeanIrvine"))
+                .RunAsync();
+
+        }
         //[Fact]
         //public async void TestFakeUser()
         //{
-                
+
         //    // Arrange
         //    var client = _factory.CreateClient();
 
@@ -67,48 +92,34 @@ I want to login into system")]
         //    // Assert
         //    var str = "JeanIrvine";
         //    Assert.True(response.Contains(str),$"{response} must contain {str}");
-                
+
         //}
+         
         
-        [Fact]
-        public async void TestEndpointGetUser()
+        private CompositeStep It_should_have_UserId(string userName)
         {
-            // Arrange
-            // Act
-            var response = await GetUserId("JeanIrvine");
-
-            Assert.NotNull(response);
-            Assert.NotEmpty(response);
-            // Assert
-            if (!Guid.TryParse(response, out var g))
-            {
-                Assert.True(false, $"the {response} should be a guid");
-            };
-
+            var step = CompositeStep.DefineNew()
+                .AddSteps(Given_The_Application_Starts)
+                .AddAsyncSteps(_ => When_The_User_Access_The_Url($"/recordVisitors/GetUserId/{userName}"))
+                .AddSteps(Then_The_Response_Should_Be_Guid)
+                .Build();
+            return step;
         }
-        //private CompositeStep Then_it_should_have_UserId()
-        //{
-        //    CompositeStep.DefineNew()
-        //        .AddStep(Given_The_Application_Starts)
-        //}
-        private Task<string> GetUserId(string userName)
-        {
-            var client = _factory.CreateClient();            
-            var response = client.GetStringAsync($"/recordVisitors/GetUserId/{userName}");
-            return response;
-        }
-        [Fact]
+
+        [Scenario]
+        [ScenarioCategory("VisitorHsitory")]
         public async void TestEndpointGetHistoryUser()
         {
-            var user = await GetUserId("JeanIrvine");
-            // Arrange
-            var client = _factory.CreateClient();
-            string arguments = $"{user}/1970-04-16/" + DateTime.UtcNow.AddDays(1).ToString("yyyy-MM-dd"); 
-            // Act
-            var response = await client.GetStringAsync($"/recordVisitors/UserHistory/{arguments}");
+            await Runner
+                .AddSteps(_ => It_should_have_UserId("JeanIrvine"))
+                .AddAsyncSteps(_=>
+                When_The_User_Access_The_Url(
+                    $"/recordVisitors/UserHistory/{this.response}/1970-04-16/" + DateTime.UtcNow.AddDays(1).ToString("yyyy-MM-dd")
+                    )
+                )
+                .AddSteps(Then_The_Response_Should_Be_Something)
+                .RunAsync();
 
-            Assert.NotNull(response);
-            Assert.NotEmpty(response);
             
 
         }

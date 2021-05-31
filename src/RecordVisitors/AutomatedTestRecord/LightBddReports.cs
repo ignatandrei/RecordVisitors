@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-[assembly: AutomatedTestRecord.ConfiguredLightBddScope] 
+[assembly: AutomatedTestRecord.ConfiguredLightBddScope]
 namespace AutomatedTestRecord
 {
     internal class ConfiguredLightBddScopeAttribute : LightBddScopeAttribute
@@ -27,8 +27,27 @@ namespace AutomatedTestRecord
 
         }
     }
+
+
     public class MarkdownReportFormatter : IReportFormatter
     {
+        public string WriteSubSteps(IStepResult step, string  prefixStep)
+        {
+            var subSteps = step.GetSubSteps();
+            if ((subSteps?.Count() ?? 0) == 0)
+                return null;
+            StringBuilder sb = new StringBuilder();
+            
+            
+            
+            foreach (var subStep in subSteps)
+            {
+                string comments = string.Join(";", step.Comments);
+                sb.AppendLine($"|{prefixStep}{subStep.Info.Number}|{subStep.Info.Name}|{subStep.Status}|{comments}|");
+                
+            }
+            return sb.ToString();
+        }
         public void Format(Stream stream, params IFeatureResult[] features)
         {
             var categories = GroupCategories(features);
@@ -47,17 +66,30 @@ namespace AutomatedTestRecord
                 {
 
                     sb.AppendLine($"## {sc.Info.ToString()}");
-                    sb.AppendLine("| Number| Name|Status|");
-                    sb.AppendLine("| ----------- | ----------- |----------- |");
-                    foreach(var step in sc.GetSteps())
+                    sb.AppendLine("| Number| Name|Status|Comments|");
+                    sb.AppendLine("| ----------- | ----------- |----------- |----------- |");
+                    foreach (var step in sc.GetSteps())
                     {
-                        sb.AppendLine($"|{step.Info.Number}|{step.Info.Name}|{step.Status}|");
+                        string comments = string.Join(";",step.Comments);
+                        var status = step.Status.ToString();
+                        if(step.Status == ExecutionStatus.Failed)
+                        {
+                            status = $"<span style='color: red'>*{step.Status}*</span>";
+                        }
+                        sb.AppendLine($"|{step.Info.Number}|{step.Info.Name}|{status}|{comments}|");
                         //put also step sub steps
-
+                        var subSteps = step.GetSubSteps();
+                        if ((subSteps?.Count() ?? 0) == 0)
+                            continue;
+                        //foreach (var subStep in subSteps)
+                        //{
+                        //    sb.AppendLine($"|a{subStep.Info.Number}|{subStep.Info.Name}|{subStep.Status}|");
+                        //}
+                        sb.Append(WriteSubSteps(step,step.Info.Number+"."));
 
                     }
                 }
-                
+
             }
 
             using (MemoryStream ms = new MemoryStream())
