@@ -73,6 +73,12 @@
       "commands": [
         "mdsnippets"
       ]
+    },
+    "dotmorten.omdgenerator": {
+      "version": "1.2.0",
+      "commands": [
+        "generateomd"
+      ]
     }
   }
 }
