@@ -11,7 +11,7 @@ namespace RecordVisitors
     {
         static SemaphoreSlim ss = new SemaphoreSlim(1, 1);
         public bool RecordJustLatest { get; set; }
-        DbContextOptions<UserRecordVisitorsContext> options;
+        readonly DbContextOptions<UserRecordVisitorsContext> options;
         public UsersRepository(DbContextOptions<UserRecordVisitorsContext> options = null)
         {
             RecordJustLatest = true;
@@ -36,14 +36,14 @@ namespace RecordVisitors
             }
         }
 
-        public async Task<string> SaveUser(Claim c)
+        public async Task<string> SaveUser(Claim claim)
         {
             try
             {
                 if (RecordJustLatest)
                     await ss.WaitAsync();
                 var ur = new UserRecorded();
-                ur.UserName = c.Value;
+                ur.UserName = claim.Value;
                 if (RecordJustLatest)
                 {
 

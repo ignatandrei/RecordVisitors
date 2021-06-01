@@ -32,16 +32,16 @@ namespace RecordVisitors
             return rr;
         }
 
-        public Claim GetUser(HttpContext cnt)
+        public Claim GetUser(HttpContext context)
         {
 
 
-            string name = cnt.User?.Identity?.Name;
+            string name = context.User?.Identity?.Name;
             if (name != null)
             {
                 return new Claim("user", name);
             }
-            return cnt.User?.Claims.FirstOrDefault();
+            return context.User?.Claims.FirstOrDefault();
 
         }
 
