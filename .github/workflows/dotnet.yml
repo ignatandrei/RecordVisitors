@@ -99,3 +99,8 @@ jobs:
         dotnet dotnet-sonarscanner begin /k:"ignatandrei_RecordVisitors" /o:"ignatandrei-github" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"        
         dotnet build
         dotnet dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+  
+    - name: See Outdated
+      run: |
+        cd src/RecordVisitors/        
+        dotnet dotnet-outdated
