@@ -41,7 +41,9 @@ namespace SampleWeb
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SampleWeb", Version = "v1" });
             });
+            #region exampleServices
             services.AddRecordVisitorsDefault();
+            #endregion
 
         }
 

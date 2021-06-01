@@ -67,6 +67,12 @@
       "commands": [
         "dotnet-project-licenses"
       ]
+    },
+    "markdownsnippets.tool": {
+      "version": "23.1.4",
+      "commands": [
+        "mdsnippets"
+      ]
     }
   }
 }
