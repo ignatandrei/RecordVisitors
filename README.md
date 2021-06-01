@@ -1,10 +1,11 @@
 
 # Record Latest visitors for .NET Core 
 
-<img src="https://github.com/ignatandrei/RecordVisitors/raw/main/docs/rv.png" width="50px"  height="50px" style="height: 50px; width:50px;" /> [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ignatandrei/RecordVisitors/blob/master/LICENSE)  
+<img src="https://github.com/ignatandrei/RecordVisitors/raw/main/docs/rv.png" width="50px"  height="50px" style="height: 50px; width:50px;" /> 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ignatandrei/RecordVisitors/blob/master/LICENSE)  
 [![BuildAndTest](https://github.com/ignatandrei/RecordVisitors/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ignatandrei/RecordVisitors/actions/workflows/dotnet.yml) 
 [![codecov](https://codecov.io/gh/ignatandrei/RecordVisitors/branch/main/graph/badge.svg?token=ur3OvnDoGh)](https://codecov.io/gh/ignatandrei/RecordVisitors)
-![Nuget](https://img.shields.io/nuget/v/recordvisitors) ![Docs](https://readthedocs.org/projects/record-visitors/badge/?version=latest)
+![Nuget](https://img.shields.io/nuget/v/recordvisitors) ![Docs](https://readthedocs.org/projects/record-visitors/badge/?version=latest) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ignatandrei_RecordVisitors&metric=alert_status)](https://sonarcloud.io/dashboard?id=ignatandrei_RecordVisitors)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
@@ -104,6 +105,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 - Project homepage: https://github.com/ignatandrei/RecordVisitors 
 - Code Coverage: https://codecov.io/gh/ignatandrei/RecordVisitors 
 - Results of tests in BDD format : https://record-visitors.readthedocs.io/en/latest/BDD/LightBDDReport/ 
+- Code analysis: https://sonarcloud.io/dashboard?id=ignatandrei_RecordVisitors
 - Repository: https://github.com/ignatandrei/RecordVisitors/
 - Issue tracker: https://github.com/ignatandrei/RecordVisitors/issues
 - Documentation: https://record-visitors.readthedocs.io/en/latest/ 
