@@ -99,6 +99,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
+Also, thanks to the people that made this possible by created frameworks and libraries - see the list here
+
+https://github.com/ignatandrei/RecordVisitors/blob/main/src/RecordVisitors/thanks.md
 
 ## Links
 
@@ -114,3 +117,4 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 ## Licence
 
 The code in this project is licensed under MIT license.
+You can find the licences for the packages used at https://github.com/ignatandrei/RecordVisitors/blob/main/src/RecordVisitors/licenses.txt 
