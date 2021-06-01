@@ -1,0 +1,134 @@
+####################################################################################################
+Package:coverlet.collector
+Version:3.0.3
+project URL:https://github.com/coverlet-coverage/coverlet
+Description:Coverlet is a cross platform code coverage library for .NET, with support for line, branch and method coverage.
+licenseUrl:https://licenses.nuget.org/MIT
+license Type:MIT
+
+####################################################################################################
+Package:GST.Fake.Authentication.JwtBearer
+Version:3.0.0
+project URL:https://github.com/GestionSystemesTelecom/fake-authentication-jwtbearer
+Description:This code allow to fake a Jwt Bearer and build integration test for ASP.Net Core application.
+      By this way we can fake any authentication we need, without the need to really authenticate a user.
+licenseUrl:
+license Type:
+
+####################################################################################################
+Package:LightBDD.XUnit2
+Version:3.3.0
+project URL:https://github.com/LightBDD/LightBDD
+Description:Allows creating acceptance tests in developer friendly environment by offering LightBDD.Framework features on top of xUnit 2 testing framework.
+
+High level features:
+* user friendly bdd scenario definitions;
+* test execution tracing and time measurement, helpful during longer test execution;
+* Xml/Html/Plain text reports generation;
+* cross-platform support (.NET Standard / .NET Framework);
+* asynchronous execution support;
+* in-code LightBDD configuration;
+* DI support;
+* inline and tabular parameters support.
+licenseUrl:https://www.nuget.org/packages/LightBDD.XUnit2/3.3.0/License
+license Type:LICENSE.txt
+
+####################################################################################################
+Package:Microsoft.AspNetCore.Authentication.JwtBearer
+Version:5.0.6
+project URL:https://asp.net/
+Description:ASP.NET Core middleware that enables an application to receive an OpenID Connect bearer token.
+
+This package was built from the source code at https://github.com/dotnet/aspnetcore/tree/dc5e11abdb05b322f4b74b3afbcfb352fe984b2e
+licenseUrl:https://licenses.nuget.org/Apache-2.0
+license Type:Apache-2.0
+
+####################################################################################################
+Package:Microsoft.AspNetCore.Authentication.OpenIdConnect
+Version:5.0.6
+project URL:https://asp.net/
+Description:ASP.NET Core middleware that enables an application to support the OpenID Connect authentication workflow.
+
+This package was built from the source code at https://github.com/dotnet/aspnetcore/tree/dc5e11abdb05b322f4b74b3afbcfb352fe984b2e
+licenseUrl:https://licenses.nuget.org/Apache-2.0
+license Type:Apache-2.0
+
+####################################################################################################
+Package:Microsoft.AspNetCore.Mvc.Testing
+Version:5.0.6
+project URL:https://asp.net/
+Description:Support for writing functional tests for MVC applications.
+
+This package was built from the source code at https://github.com/dotnet/aspnetcore/tree/dc5e11abdb05b322f4b74b3afbcfb352fe984b2e
+licenseUrl:https://licenses.nuget.org/Apache-2.0
+license Type:Apache-2.0
+
+####################################################################################################
+Package:Microsoft.EntityFrameworkCore.InMemory
+Version:5.0.6
+project URL:https://docs.microsoft.com/ef/core/
+Description:In-memory database provider for Entity Framework Core (to be used for testing purposes).
+licenseUrl:https://licenses.nuget.org/Apache-2.0
+license Type:Apache-2.0
+
+####################################################################################################
+Package:Microsoft.Identity.Web
+Version:1.11.0
+project URL:https://github.com/AzureAD/microsoft-identity-web
+Description:This package enables ASP.NET Core web apps and web APIs to use the Microsoft identity platform (formerly Azure AD v2.0).
+      This package is specifically used for web applications, which sign-in users, and protected web APIs, which optionally call downstream web APIs.
+licenseUrl:https://licenses.nuget.org/MIT
+license Type:MIT
+
+####################################################################################################
+Package:Microsoft.NET.Test.Sdk
+Version:16.10.0
+project URL:https://github.com/microsoft/vstest/
+Description:The MSbuild targets and properties for building .NET test projects.
+licenseUrl:https://www.nuget.org/packages/Microsoft.NET.Test.Sdk/16.10.0/License
+license Type:LICENSE_NET.txt
+
+####################################################################################################
+Package:Microsoft.SourceLink.GitHub
+Version:1.0.0
+project URL:https://github.com/dotnet/sourcelink
+Description:Generates source link for GitHub repositories.
+licenseUrl:https://licenses.nuget.org/Apache-2.0
+license Type:Apache-2.0
+
+####################################################################################################
+Package:Swashbuckle.AspNetCore
+Version:6.1.4
+project URL:https://github.com/domaindrivendev/Swashbuckle.AspNetCore
+Description:Swagger tools for documenting APIs built on ASP.NET Core
+licenseUrl:https://licenses.nuget.org/MIT
+license Type:MIT
+
+####################################################################################################
+Package:ThisAssembly
+Version:1.0.8
+project URL:https://clarius.org/ThisAssembly
+Description:Meta-package that includes all ThisAssembly.* packages. ** C# 9.0 ONLY **
+
+Built from https://github.com/devlooped/ThisAssembly/tree/14cf2358e
+licenseUrl:https://licenses.nuget.org/MIT
+license Type:MIT
+
+####################################################################################################
+Package:xunit
+Version:2.4.1
+project URL:https://github.com/xunit/xunit
+Description:xUnit.net is a developer testing framework, built to support Test Driven Development, with a design goal of extreme simplicity and alignment with framework features.
+
+Installing this package installs xunit.core, xunit.assert, and xunit.analyzers.
+licenseUrl:https://raw.githubusercontent.com/xunit/xunit/master/license.txt
+license Type:
+
+####################################################################################################
+Package:xunit.runner.visualstudio
+Version:2.4.3
+project URL:https://github.com/xunit/visualstudio.xunit
+Description:Visual Studio 2017 15.9+ Test Explorer runner for the xUnit.net framework. Capable of running xUnit.net v1.9.2 and v2.0+ tests. Supports .NET 2.0 or later, .NET Core 2.1 or later, and Universal Windows 10.0.16299 or later.
+licenseUrl:https://licenses.nuget.org/MIT
+license Type:MIT
+

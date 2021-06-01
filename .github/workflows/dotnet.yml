@@ -104,3 +104,5 @@ jobs:
       run: |
         cd src/RecordVisitors/        
         dotnet dotnet-outdated
+        dotnet dotnet-thx 
+        dotnet dotnet-project-licenses -i .\RecordVisitors.sln 
