@@ -84,3 +84,14 @@ jobs:
         name: LightBDD_${{github.run_number}}
         path: src/RecordVisitors/AutomatedTestRecord/bin/Debug/net5.0/Reports
         retention-days: 1
+
+    - name: Build and analyze
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      shell: powershell
+      run: |
+        dotnet dotnet-sonarscanner begin /k:"ignatandrei_RecordVisitors" /o:"ignatandrei-github" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+        cd src/RecordVisitors
+        dotnet build
+        dotnet dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"

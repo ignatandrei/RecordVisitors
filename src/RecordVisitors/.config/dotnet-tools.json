@@ -37,6 +37,12 @@
       "commands": [
         "xunit"
       ]
+    },
+    "dotnet-sonarscanner": {
+      "version": "5.2.1",
+      "commands": [
+        "dotnet-sonarscanner"
+      ]
     }
   }
 }
