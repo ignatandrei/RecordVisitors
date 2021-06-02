@@ -100,11 +100,11 @@ jobs:
         dotnet build
         dotnet dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
-- name: helper - see Outdated, thanks , licences and depends
-  run: |
-    cd src/RecordVisitors/        
-    dotnet dotnet-outdated
-    dotnet dotnet-thx 
-    dotnet dotnet-project-licenses -i .\RecordVisitors.sln 
-    dotnet dotnet-versionit  --skip-dirty --skip-commit  -r 2021.5.31.1755 
-    # dotnet dotnet-depends
+    - name: helper - see Outdated, thanks , licences and depends
+      run: |
+        cd src/RecordVisitors/        
+        dotnet dotnet-outdated
+        dotnet dotnet-thx 
+        dotnet dotnet-project-licenses -i .\RecordVisitors.sln 
+        dotnet dotnet-versionit  --skip-dirty --skip-commit  -r 2021.5.31.1755 
+        # dotnet dotnet-depends
